@@ -2,8 +2,15 @@
 
 The goal of this project is to setup an application deployed to Kubernetes that can discover via Consul/Consul Connect a MySQL Group Replication Cluster running on a VM cluster outside of Kubernetes.  The MySQL cluster will be fronted by a ProxySQL cluster, and will be discoverable via service discovery from Consul.
 
-## Preliminary thoughts
+## Tools/Software
+- Kubernetes (via AKS)
+- Hashicorp
+    - Consul (required)
+    - Packer (required)
+    - Vault (optional)
+    - Terraform (optional)
 
+## Preliminary thoughts
 1. Use packer to create a base image
     - ensure:
       - MySQL is installed
