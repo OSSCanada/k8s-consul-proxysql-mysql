@@ -5,30 +5,30 @@ The goal of this project is to setup an application deployed to Kubernetes that 
 ## Preliminary thoughts
 
 1. Use packer to create a base image
-  - ensure:
-    - MySQL is installed
-    - Consul agent is installed
-  - run cloudinit scripts to initialize the MySQL Group Replication cluster
-    - check to see if current node is ```<node-name>-#``` e.g. ```mysql-node-1```
-      - run initial MySQL group replication setup for first node
-      - output/save the config string for all other nodes
-    - check to see if current node 
-      - use output from first node to join the cluster
+    - ensure:
+      - MySQL is installed
+      - Consul agent is installed
+    - run cloudinit scripts to initialize the MySQL Group Replication cluster
+      - check to see if current node is ```<node-name>-#``` e.g. ```mysql-node-1```
+        - run initial MySQL group replication setup for first node
+        - output/save the config string for all other nodes
+      - check to see if current node 
+        - use output from first node to join the cluster
 1. Use packer to create a base image
-  - ensure:
-    - ProxySQL is installed
-    - Consul agent is installed
-  - run init scripts to stand up the ProxySQL cluster
+    - ensure:
+      - ProxySQL is installed
+      - Consul agent is installed
+    - run init scripts to stand up the ProxySQL cluster
 
 ### Kubernetes
 1. Deploy AKS cluster
 1. Install Consul via Helm
 1. Deploy base app that will connect to the MySQL backend
 1. Ensure consul agent/proxy is deployed as sidecar along side app
-  - enforce mTLS communication
-  - enforce service mesh policies (App can communicate with MySQL backend)
+    - enforce mTLS communication
+    - enforce service mesh policies (App can communicate with MySQL backend)
 
 ## Future
 1. Add Vault integration to dynamically get MySQL user credentials
-  - reduces the blast radius should a node and it's credentials get compromised
-  - allows for auditing/logging for who has tried to gain access
+    - reduces the blast radius should a node and it's credentials get compromised
+    - allows for auditing/logging for who has tried to gain access
