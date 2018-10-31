@@ -9,6 +9,9 @@ The goal of this project is to setup an application deployed to Kubernetes that 
     - Packer (required)
     - Vault (optional)
     - Terraform (optional)
+- MySQL/MariaDB (required)
+- ProxySQL (required)
+- 
 
 ## Preliminary thoughts
 1. Use packer to create a base image
